@@ -1,0 +1,23 @@
+.sideMenu {
+    position: fixed;
+    left:0px;
+    background: #288288;
+    color: white;
+    margin:0px;
+    padding:14px 0px;
+    height: 100vh;
+}
+
+li a { color: #288288 !important }
+
+.usersList .usersEmail {
+    color: gray;
+    font-size: 14px;
+    position: absolute;
+    right: 100px
+}
+
+.usersList .usersEmail:hover {
+    color: red;
+    font-size: 14px;
+} 
