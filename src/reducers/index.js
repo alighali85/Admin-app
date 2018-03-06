@@ -2,7 +2,7 @@
 
 const initialState = {
     auth: false,
-    userId: '0',
+    userId: 'Ali ghali',
     token: null
 }
 
@@ -12,7 +12,8 @@ export default( state = initialState, action )=> {
     {
         case 'USER_LOGGED_IN':
         return Object.assign( {}, state, {
-            auth: true
+            auth: true,
+            userId: 'NOT ALI '
         })
 
         case 'USER_NOT_LOGGED_IN' :

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './adminNavStyle.css';
 import AdminLogin from './AdminLogin';
 import { Glyphicon } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class AdminNav extends Component {
   constructor(props) {
@@ -28,25 +29,33 @@ class AdminNav extends Component {
           <br/>
             <ul class="list-group ">
 
-            <li href="/" class="list-group-item">
-            <Glyphicon glyph="star" />
-              <a href="/" > Home </a>
+            <Link to={'./home'} activeClassName="active">
+            <li href="/home" class="list-group-item">
+            <span className=" glyphicon glyphicon-user "> </span>
+            <a href="" > Home </a>
             </li>
+            </Link>
 
+            <Link to={'./users'} activeClassName="active">
+            <li href="/users" class="list-group-item">
+            <span className=" glyphicon glyphicon-user "> </span>
+            <a href="" > Users </a>
+            </li>
+            </Link>
+
+            <Link to={'./documents'} activeClassName="active">
             <li href="/" class="list-group-item">
             <span className=" glyphicon glyphicon-user "> </span>
-            <a href="/users" > Users </a>
+            <a href="" > Documents </a>
             </li>
-
+            </Link>
+            
+            <Link to={'./todo'} activeClassName="active">
             <li href="/" class="list-group-item">
-            <span className=" glyphicon glyphicon-file "> </span>
-            <a href="/documents" > Documents </a>
+            <span className=" glyphicon glyphicon-user "> </span>
+            <a href="" > todo List </a>
             </li>
-
-            <li href="/" class="list-group-item">
-            <span className=" glyphicon glyphicon-th-list "> </span>
-            <a href="/todo" > Todo List </a>
-            </li>
+            </Link>
 
             { !this.props.auth ? <li href="/" class="list-group-item"><a href="/login" > Login </a></li> 
             : <li onClick= { this.logout } href="/" class="list-group-item"><a href="/" > Logout </a></li>

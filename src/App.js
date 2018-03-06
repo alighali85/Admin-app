@@ -8,6 +8,8 @@ import { Route, BrowserRouter } from 'react-router-dom';
   import AdminDashBoard from './components/AdminDashBoard';
   import routes from './routes'
   import './components/adminNavStyle.css';
+import AdminHomePage from './components/AdminHomePage';
+import { connect } from 'react-redux';
   
 
 class App extends Component {
@@ -33,10 +35,12 @@ componentWillMount() {
   }
 }
   componentDidMount() {
+    console.log('USER ID APP// '+  this.props.auth ) 
   }
 
   
 render() {
+  const { auth } = this.props;
   return (        
           <BrowserRouter>
             <Grid fluid={ true } >
@@ -47,7 +51,8 @@ render() {
                     </Col>
                   <Col md={ 9 }> 
                   <br/>
-                    <Route path="/" exact component={ AdminDashBoard } />
+                  { auth ? <Route path="/" exact component={ AdminDashBoard } /> : <AdminHomePage/>}
+                    
                     { routes.map( ({ path, component:C })=> ( 
                       <Route
                       path= { path }
@@ -63,4 +68,5 @@ render() {
 }
 
 
-export default App ;
+
+export default  App  ;

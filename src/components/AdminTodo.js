@@ -43,9 +43,10 @@ class AdminTodo extends Component {
       });
  }
  componentDidMount() {
-     console.log(
-         this.props.auth
-     )
+    if ( this.props.auth !== true ){
+        this.props.history.push("./home");
+      }
+      
     /* fetch API in action */
     fetch('http://localhost:3004/users')
         .then(response => {
@@ -58,9 +59,7 @@ class AdminTodo extends Component {
   }
 
   componentWillMount() {
-      if ( this.props.auth !== true ){
-        this.props.history.push("./home");
-      }
+      
   }
 
     render() {
