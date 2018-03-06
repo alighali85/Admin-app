@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Switch, Redirect } from 'react-router';
 import { Grid, Row, Col, ListGroup, ListGroupItem, Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
-
 class AdminUsers extends Component {
     constructor( props ) {
         super( props );

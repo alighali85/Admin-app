@@ -44,7 +44,7 @@ render() {
   return (        
           <BrowserRouter>
             <Grid fluid={ true } >
-              <Row>
+              <Row >
                   <Col md={ 3 } xsHidden={ true } className='sideMenu text-center'>
                   <img alt="" width='50%' src='http://www.mieterengel.de/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-11.58.52-AM.png'/>
                   <AdminNav auth= {this.props.auth} className='sideMenu text-left'/>

@@ -75,10 +75,8 @@ class AdminLogin extends Component {
             {this.state.alert}
             <Form horizontal onSubmit={this.sendLoginRequest}>
           <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              Email
-            </Col>
-            <Col sm={ 10 }>
+            
+            <Col sm={ 12 }>
               <FormControl 
                 name= 'email'
                 onChange={ this.handelInputChange }
@@ -89,10 +87,8 @@ class AdminLogin extends Component {
           </FormGroup>
 
           <FormGroup controlId="formHorizontalPassword">
-            <Col componentClass={ ControlLabel } sm={ 2 }>
-              Password
-            </Col>
-            <Col sm={ 10 }>
+            
+            <Col sm={ 12 }>
               <FormControl 
               name= 'password'
               onChange={ this.handelInputChange }
