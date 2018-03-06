@@ -15,42 +15,43 @@ import {
   import AdminLogin from './components/AdminLogin';
   import AdminDashBoard from './components/AdminDashBoard';
   import AdminTodo from './components/AdminTodo';
-  import routes from './routes';
-  import { connect } from 'react-redux';
+  import  { Provider }   from 'react-redux';
+  import routes from './routes'
   import './components/adminNavStyle.css';
-  import { userLoggedIn, userNotLoggedIn } from './actions'
   
 
 class App extends Component {
   constructor( props ){
     super( props );
-  this.store= this.props.store;
+    this.state = {
+      auth: 'user not logged in ',
+      userId: '',
+      token: 'rewtettwe'
+    }
   }
-
 componentWillMount() {
-  console.log( this.store.getState() );
-  this.store.dispatch( userLoggedIn())
-
-    if (this.auth === 'true' ){
-      console.log('congrats you have logged in ')
-      this.setState({
-        auth: true
-      })
-    }
-    else {
-      console.log('please log in to continue')
-      this.setState({
-        auth: false
-      })
-    }
+  const auth = localStorage.getItem('token');
+if (auth === 'true '){
+  console.log('congrats you have logged in ')
+  this.setState({
+    auth: true
+  })
+}
+else {
+  console.log('please log in to continue')
+  this.setState({
+    auth: false
+  })
+}
 }
 
-// Component did  mount 
-  componentDidMount() {} 
+  componentDidMount() {
+    
+  }
   
 render() {
   return (
-    
+    <Provider store= { this.store }> 
           <Grid fluid={ true } >
               <Row>
                   <Col md={ 3 } xsHidden={ true } className='sideMenu text-center'>
@@ -59,9 +60,7 @@ render() {
                     </Col>
                   <Col md={ 9 }> 
                   <br/>
-                    <Route path="/"
-                      render = { (props)=> <AdminDashBoard {...props} auth= {this.props.auth}/>}
-                     />
+                    <Route path="/" exact component={ AdminDashBoard } />
 
                     { routes.map( ({ path, component:C })=> ( 
                       <Route
@@ -73,10 +72,11 @@ render() {
                   </Col>
               </Row>
           </Grid>
+    </Provider>
           
     );
   }
 }
 
 
-export default App;
+export default App ;

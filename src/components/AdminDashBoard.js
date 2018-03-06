@@ -3,20 +3,14 @@ import { Route , BrowserRouter } from 'react-router-dom';
 import { Grid, Row, Col, Navbar, Jumbotron, Button } from 'react-bootstrap';
 import AdminNav from './AdminNav';
 import './adminNavStyle.css';
-import { userNotLoggedIn } from '../actions/index';
 
 
 
 class AdminDashBoard extends Component {
     constructor(props ) {
-        super(props);
-        this.store= this.props.store;
+        super(props)
     }
-logMeout =()=> {
 
-    this.store.dispatch( userNotLoggedIn)
-
-}
     render() {
         return(
             <Grid>
@@ -29,7 +23,7 @@ logMeout =()=> {
                         here you can finde over view about the last activities on your app
                     </p>
                     <p>
-                        <Button onClick={ this.logMeout } bsStyle="primary" style={{background:'#288288', border: 'none'}}>Log out </Button>
+                        <Button bsStyle="primary" style={{background:'#288288', border: 'none'}}>Learn more</Button>
                     </p>
                     </Jumbotron>
                 </Col>
