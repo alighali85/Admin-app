@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 class AdminTodo extends Component {
     constructor(props) {
@@ -55,6 +55,12 @@ class AdminTodo extends Component {
             //Fetched product is stored in the state
            this.setState({ usersList : users });
         });
+  }
+
+  componentWillMount() {
+      if ( this.props.auth !== true ){
+        this.props.history.push("./home");
+      }
   }
 
     render() {

@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-import { Route , BrowserRouter } from 'react-router-dom';
-import { Grid, Row, Col, Navbar, Jumbotron, Button } from 'react-bootstrap';
-import AdminNav from './AdminNav';
+import { Grid, Row, Col, Jumbotron, Button } from 'react-bootstrap';
 import './adminNavStyle.css';
 
 
-
 class AdminDashBoard extends Component {
-    constructor(props ) {
-        super(props)
-    }
-
     render() {
         return(
             <Grid>
@@ -79,7 +72,6 @@ class AdminDashBoard extends Component {
                     </p>
                     </Jumbotron>
                 </Col>
-
             </Row>
                 
             </Grid>
@@ -88,5 +80,4 @@ class AdminDashBoard extends Component {
     };
 
     
-           
 export default AdminDashBoard;

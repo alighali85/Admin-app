@@ -2,7 +2,6 @@
 import AdminHomePage from './components/AdminHomePage';
 import AdminUsers from './components/AdminUsers';
 import AdminDocument from './components/documents';
-import AdminPosts from './components/AdminPosts';
 import AdminLogin from './components/AdminLogin';
 import AdminTodo from './components/AdminTodo';
 

@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import AdminUsers from './AdminUsers';
+import React from 'react';
 
 const AdminHomePage  = ()=> 
 <div>

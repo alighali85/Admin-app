@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Redirect } from 'react-router';
-import { Grid, Row, Col, ListGroup, ListGroupItem, PageHeader, Panel, Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { Grid, Row, Col, ListGroup, ListGroupItem, Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 
 class AdminUsers extends Component {
@@ -12,7 +11,7 @@ class AdminUsers extends Component {
             userInput: '',
             userInputEmail: '',
             usersList: [],
-            auth: false
+            auth: this.props.auth
         }
     }
 
@@ -25,20 +24,21 @@ class AdminUsers extends Component {
         color: 'red'
     }
 
-    onHover = (event)=> {
+    onHover = ( event )=> {
         event.target.style.color = 'red'
     }
-    onMouseLeave (event){
+
+    onMouseLeave ( event ){
         event.target.style.color = 'white';
         console.log("mouse leaves")
     }
 
-     handelChange = (event)=> {
+     handelChange = ( event )=> {
          const name = event.target.name;
         this.setState({ [name]: event.target.value });         
     }
 
-    addToList = (event) => {
+    addToList = ( event ) => {
         event.preventDefault();
         fetch('http://localhost:3004/users', {
             method: 'POST',
@@ -67,8 +67,9 @@ class AdminUsers extends Component {
             })
             .then(users => {
                this.setState({ usersList : users });
-            });
+            })
       }
+      
        removeUser (usrid)  {
             return fetch('http://localhost:3004/users/'+ usrid, {
               method: 'delete'
@@ -76,17 +77,17 @@ class AdminUsers extends Component {
             .then(response => {
                 this.componentDidMount();
             }
-                
         )   
     }
 
-    render() {
-       if ( this.state.auth === true ){
+   componentWillMount() {
+      if ( this.props.auth !== true ){
+        this.props.history.push("/");
+      }
+  }
 
-       
+    render() {
       return (
-          
-       
         <Grid>
             <Row>
                 <Col md={6} sm={6} lg={6} mdOffset={9} lgOffset={9} smOffset={9}>
@@ -117,23 +118,14 @@ class AdminUsers extends Component {
                             <Button onClick={this.removeUser.bind(this, user.id)} bsStyle="primary" style={deleteButton}><small> Delete </small></Button>
                         </ListGroupItem>)}
                     </ListGroup>
-            </Form>
-                
+                </Form>
                 </Col>
             </Row>
-        </Grid>)}
-      else{
-          return (
-<Switch>
-            <Redirect to='/login' msg={"PLease Login to Continue "}/>
-        </Switch>
-          ) 
-          
-      }
-        
+        </Grid>
+        )
       }
     }
-    const userImg = <h2>uuu</h2>
+
     const deleteButton = {
         fontSize: "14px",
         color: "lightGray",

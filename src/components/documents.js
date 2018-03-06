@@ -1,14 +1,13 @@
-import React, { Component, Switch, Redirect } from 'react';
-import { Grid, Row, Col, ListGroup, ListGroupItem, PageHeader, Panel, Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import React, { Component } from 'react';
+import {  ListGroup, ListGroupItem } from 'react-bootstrap';
+import {  Switch, Redirect } from 'react-router-dom';
 
 class AdminDocument extends Component {
     constructor( props ){
         super ( props );
-        this.props.history;
-    this.state = {
+        this.state = {
         documents : [],
-        auth: false
-
+        auth: null
         }
     }
 
@@ -19,7 +18,7 @@ class AdminDocument extends Component {
                 headers: {
                   'Accept': 'application/json',
                   'Content-Type': 'application/json',
-                  'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDgsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTUyMDI0Mjk2NSwiZXhwIjoxNTIwNDE1NzY1fQ.bPgOg2BL_JZ12rVPgLprXXsgFK_BTq8JBRFSkb0W7mA'
+                  'Authorization':  `Bearer ${localStorage.getItem('token')}`
                 }
             }).then((response) => response.json())
               .then((responseData) => {
@@ -31,11 +30,13 @@ class AdminDocument extends Component {
     }
 
     componentWillMount() {
-        
+        if ( this.props.auth !== true ){
+          this.props.history.push("/");
+        }
     }
-    
-
+ 
     render () {
+       
         return (
             <ListGroup>
             {this.state.documents.map( (doc,index) =>

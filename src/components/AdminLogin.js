@@ -1,128 +1,123 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Form, FormControl, FormGroup, Checkbox, Button,ControlLabel } from 'react-bootstrap';
+import { Grid, Row, Col, Form, FormControl, FormGroup, Button,ControlLabel } from 'react-bootstrap';
 
 
 class AdminLogin extends Component {
-    constructor(props){
-    super(props);
-    this.state= {
-      alert: '',
-      JWT: " ...",
-      userInput: '',
-      userInputEmail: '',
-      requestResponse: '',
-      msg : this.props.msg,
-      token: ''
-    }    
-
+    constructor( props ) {
+      super( props );
+      this.state = {
+        alert: '',
+        password: '',
+        email: '',
+        requestResponse: '',
+        msg : this.props.msg,
+        token: ''
+      }
    }
 
-   handelInputChange = (event)=> {
+   handelInputChange = ( event ) => {
      const name = event.target.name;
      this.setState({
       [name]: event.target.value,
       alert: ''
      })
    }
-   handelSuccess = ( res )=> {
-     res.json().then( jsonRes=> this.setState({
-       token: jsonRes
-     }));
-     console.log( this.state.token)
+
+   loginSuccess = ( res ) => {
+     this.setState( {
+       token: res.data.token
+     } );
+
+     localStorage.setItem('token', this.state.token);
+     window.location.href= './'
    }
 
-   handelPostErrors =( response ) => {
-     
-    if (!response.ok) {
-      this.setState({
+   handelLoginErrors = (  ) => {
+      this.setState( {
         alert : 'please check your credentials'
-      })
-  }
-  return response;
+    } )
    }
 
-    getJWt = (event) => {
+   sendLoginRequest = ( event ) => {
       event.preventDefault();
-      fetch('https://api.staging.mieterengel.de/login', {
+      let userEmail = this.state.email;
+      let userPassword = this.state.password;
+
+      fetch( 'https://api.staging.mieterengel.de/login' , {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-              email: "test@mailinator.com",
-              password: "12345",
+              email: userEmail,
+              password: userPassword,
           })
-        }).then(this.handelPostErrors).then(this.handelSuccess)
-   }
-
-
-   
-   componentDidMount() {
-     const lst= localStorage.getItem('token');
-     
-   }
-
-    
-   
+        }).then( response => {
+          if ( response.status !== 200 ) {
+            this.handelLoginErrors( response.status );
+            console.log( "wrong email or password"+ response.status );
+          } 
+          else {
+             response.json().then( data => {
+               this.loginSuccess( data )
+             })
+          }
+          return response;
+          })
+        }
 
     render() {
-      const { JWT } = this.state
         return ( 
         <Grid>
           <h2>{this.state.msg}</h2>
             <h2> Admin Log in Area </h2><br/>
             <br/>
             {this.state.alert}
-            <Form horizontal onSubmit={this.getJWt}>
+            <Form horizontal onSubmit={this.sendLoginRequest}>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>
               Email
             </Col>
-            <Col sm={10}>
+            <Col sm={ 10 }>
               <FormControl 
-                name= 'userInputEmail'
-                onChange={this.handelInputChange}
-                value= {this.state.userInputEmail} 
+                name= 'email'
+                onChange={ this.handelInputChange }
+                value= { this.state.email } 
                 type="email" placeholder="Email" 
                 />
             </Col><br/>
-            {this.state.userInputEmail}
           </FormGroup>
 
           <FormGroup controlId="formHorizontalPassword">
-            <Col componentClass={ControlLabel} sm={2}>
+            <Col componentClass={ ControlLabel } sm={ 2 }>
               Password
             </Col>
-            <Col sm={10}>
+            <Col sm={ 10 }>
               <FormControl 
-              name= 'userInput'
-              onChange={this.handelInputChange}
-              value= {this.state.userInput} 
+              name= 'password'
+              onChange={ this.handelInputChange }
+              value= { this.state.password } 
               type="password" 
               placeholder="Password" 
               /><br/>
-              {this.state.userInput}
             </Col>
           </FormGroup>
 
           <FormGroup>
-            <Col smOffset={2} sm={10}>
-              <Checkbox>Remember me</Checkbox>
+            <Col smOffset={ 2 } sm={ 10 }>
             </Col>
           </FormGroup>
 
           <FormGroup>
-            <Col smOffset={2} sm={10}>
-              <Button type="submit" bsStyle="primary" className='btn' >Sign in</Button>
+            <Col smOffset={ 2 } sm={ 10 }>
+              <Button type="submit" bsStyle="primary" className='btn' > Log in </Button>
             </Col>
           </FormGroup>
         </Form>
-
         <Row>
-          <p>the JSON web token you have is : {this.state.requestResponse}</p>
         </Row>
-      </Grid>)
-        
+      </Grid>
+      )
     }
 
 } 
