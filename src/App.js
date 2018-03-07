@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import './admin-logo.png';
-
+import './assets/images/admin-logo.png';
 import { Route, BrowserRouter } from 'react-router-dom';
-  
-  import AdminNav from './components/AdminNav';
-  import AdminDashBoard from './components/AdminDashBoard';
-  import routes from './routes'
-  import './components/adminNavStyle.css';
-import AdminHomePage from './components/AdminHomePage';
+import AdminNav from './Components/AdminNav';
+import AdminDashBoard from './Components/AdminDashBoard';
+import routes from './routes'
+import './styles/mainLayout.css';
+import AdminHomePage from './Components/AdminHomePage';
 import { connect } from 'react-redux';
+
   
-
 class App extends Component {
-
   constructor( props ) {
     super( props );
     this.state = {
@@ -21,6 +18,7 @@ class App extends Component {
       userId: '',
     }
   }
+
 componentWillMount() {
   const auth = localStorage.getItem('token');
   if (auth === 'true ') {
@@ -34,11 +32,11 @@ componentWillMount() {
     })
   }
 }
-  componentDidMount() {
+
+componentDidMount() {
     console.log('USER ID APP// '+  this.props.auth ) 
   }
 
-  
 render() {
   const { auth } = this.props;
   return (        
@@ -49,16 +47,15 @@ render() {
                   <img alt="" width='50%' src='http://www.mieterengel.de/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-11.58.52-AM.png'/>
                   <AdminNav auth= {this.props.auth} className='sideMenu text-left'/>
                     </Col>
-                  <Col md={ 9 }> 
+                  <Col md={ 9 } className=" main-body" > 
                   <br/>
-                  { auth ? <Route path="/" exact component={ AdminDashBoard } /> : <AdminHomePage/>}
-                    
-                    { routes.map( ({ path, component:C })=> ( 
+                  { auth ? <Route path="/" exact component={ AdminDashBoard } /> : <AdminHomePage/> }
+                  { routes.map( ({ path, component:C })=> ( 
                       <Route
                       path= { path }
-                      render = { (props)=> <C {...props} auth= {this.props.auth}/>}
-                      />
-                    ))}    
+                      render = { ( props ) => <C {...props} auth= { this.props.auth }/> }
+                      /> ) )
+                  }    
                   </Col>
               </Row>
           </Grid>
@@ -67,6 +64,4 @@ render() {
   }
 }
 
-
-
-export default  App  ;
+export default  App;

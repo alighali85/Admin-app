@@ -13,7 +13,6 @@ export default( state = initialState, action )=> {
         case 'USER_LOGGED_IN':
         return Object.assign( {}, state, {
             auth: true,
-            userId: 'NOT ALI '
         })
 
         case 'USER_NOT_LOGGED_IN' :

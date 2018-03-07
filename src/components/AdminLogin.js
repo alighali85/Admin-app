@@ -14,7 +14,7 @@ class AdminLogin extends Component {
         token: ''
       }
    }
-
+  
    handelInputChange = ( event ) => {
      const name = event.target.name;
      this.setState({
@@ -34,7 +34,7 @@ class AdminLogin extends Component {
 
    handelLoginErrors = (  ) => {
       this.setState( {
-        alert : 'please check your credentials'
+        alert : 'Error: please check your credentials'
     } )
    }
 
@@ -69,10 +69,11 @@ class AdminLogin extends Component {
     render() {
         return ( 
         <Grid>
-          <h2>{this.state.msg}</h2>
+          
             <h2> Admin Log in Area </h2><br/>
             <br/>
-            {this.state.alert}
+            <p style={{color: 'yellow' }}>  {this.state.alert}</p>
+            
             <Form horizontal onSubmit={this.sendLoginRequest}>
           <FormGroup controlId="formHorizontalEmail">
             
@@ -100,12 +101,12 @@ class AdminLogin extends Component {
           </FormGroup>
 
           <FormGroup>
-            <Col smOffset={ 2 } sm={ 10 }>
+            <Col  sm={ 12 }>
             </Col>
           </FormGroup>
 
           <FormGroup>
-            <Col smOffset={ 2 } sm={ 10 }>
+            <Col  sm={ 12 }>
               <Button type="submit" bsStyle="primary" className='btn' > Log in </Button>
             </Col>
           </FormGroup>
@@ -115,7 +116,6 @@ class AdminLogin extends Component {
       </Grid>
       )
     }
-
 } 
 
 export default AdminLogin;

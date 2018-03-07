@@ -1,31 +1,32 @@
 
-import AdminHomePage from './components/AdminHomePage';
-import AdminUsers from './components/AdminUsers';
-import AdminDocument from './components/documents';
-import AdminLogin from './components/AdminLogin';
-import AdminTodo from './components/AdminTodo';
+import AdminHomePage from './Components/AdminHomePage';
+import AdminUsers from './Components/AdminUsers';
+import AdminLogin from './Components/AdminLogin';
+import Categories from './Containers/Documents/Categories';
+import EditCategory from './Components/AdminDocuments/EditCategory';
+
 
 export const routes = [
     {
       path: './',
-      component: AdminHomePage
-    },
-    {
-      path: '/login',
-      component: AdminLogin
-    },
-    {
-      path: '/todo',
-      component: AdminTodo
+      component: AdminHomePage,
+      title: 'Home'
     },
     {
       path: '/documents',
-      component: AdminDocument
+      component: Categories,
+      title: 'Documents Categories'
     },
     {
       path: '/users',
-      component: AdminUsers
+      component: AdminUsers,
+      title: 'Users'
+    },
+    {
+      path: '/editCategory',
+      component: EditCategory,
+      title: 'Edit Category'
     },
   ];
-
+  
   export default routes

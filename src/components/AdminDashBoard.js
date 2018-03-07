@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Jumbotron, Button } from 'react-bootstrap';
-import './adminNavStyle.css';
+import '../styles/mainLayout.css';
 
 
 class AdminDashBoard extends Component {
