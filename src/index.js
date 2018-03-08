@@ -9,10 +9,11 @@ import { Provider } from 'react-redux';
 import index from './reducers';
 import { userLoggedIn, userNotLoggedIn } from './actions';
 import { api } from './auth/utils/api';
-import { checkTokenOnserver } from './auth/checkTokenOnserver'
+import { checkTokenOnserver } from './auth/checkTokenOnserver';
+import axios from 'axios';
 
 let store = createStore( index );
-let token = localStorage.getItem( 'token');
+let token = localStorage.getItem( 'token' );
  if ( token ) {
     fetch( api , {
         method: 'GET',
@@ -21,30 +22,25 @@ let token = localStorage.getItem( 'token');
           'Content-Type': 'application/json',
           'Authorization':  `Bearer ${ token }`
         }
-    })
-   .then((response) => {
-        if ( response.status === 200 ){
-            store.dispatch ( userLoggedIn() )
+    } )
+   .then( response => {
+        if ( response.status === 200 ) {
+            store.dispatch ( userLoggedIn() );
+            axios.defaults.headers.common[ 'Authorization' ] = `Bearer ${ token }`;
         } else {
-            store.dispatch ( userNotLoggedIn() )
+            store.dispatch ( userNotLoggedIn() );
+            axios.defaults.headers.common[ 'Authorization' ] = null;
         }
-        
     })
-        
  }
 
 function render() {
-    
-    
-ReactDOM.render(
-    <Provider store= { store } >
+    ReactDOM.render(
+        <Provider store= { store } >
             <App auth= { store.getState().auth }/>
-    </Provider>
-
-        
-    
-, document.getElementById('root'));
-registerServiceWorker();
+        </Provider>  
+    , document.getElementById( 'root' ) );
+    registerServiceWorker();
 }
 
 store.subscribe( render );

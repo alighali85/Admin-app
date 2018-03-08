@@ -1,48 +1,56 @@
 import React, { Component } from 'react';
-import DocumentsCategories from '../../Components/AdminDocuments/DocumentsCategories'
-import EditeCaterory from '../../Components/AdminDocuments/EditCategory';
-import { Route } from 'react-router-dom'
+import DocumentsCategories from '../../Components/AdminDocuments/DocumentsCategories';
+import { Route } from 'react-router-dom';
+import documentCategoryIcon from '../../assets/images/documentIcon.png'
 
 class Categories extends Component {
     constructor( props ) {
         super( props );
         this.state = {
-            documents : []
+            categories : [],
+            reload: true,
          }
     }
 
-    componentDidMount() {
-        fetch('https://api.staging.mieterengel.de/documents/categories', {
+    getCategories = ( ) => {
+        fetch( 'https://api.staging.mieterengel.de/documents/categories', {
             method: 'GET',
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
-              'Authorization':  `Bearer ${localStorage.getItem('token')}`
+              'Authorization':  `Bearer ${ localStorage.getItem( 'token' ) }`
             }
-        }).then((response) => response.json())
-          .then((responseData) => {
-              this.setState({
-                  documents: responseData.data
-              });
-              console.log(this.state.documents)
-          })     
-          console.log( " document container props "+ this.props.auth )   
+        } ).then(  response  => response.json() )
+           .then(  responseData  => {
+              this.setState( {
+                categories: responseData.data
+              } );
+          })  
+    }
+
+    componentDidMount() {
 }
 
     componentWillMount() {
-        if ( this.props.auth !== true ){
-        this.props.history.push("/");
+      
+        if ( this.props.auth !== true ) {
+             this.props.history.push( "/" );
+        } else {
+            this.getCategories();
         }
     }
 
-render () {
+    render() {
         return (
             <div> 
-            
+              <p> 
+                  <h3><img width=" 64 "  width=" 64 " src={ documentCategoryIcon }/>
+                     Documents categories </h3> <button onClick= { this.getCategories }> Update { this.state.categories.length } </button> </p>
+                   <br/><br/>
             <DocumentsCategories
              auth = { this.props.auth } 
              history = {this.props.history }
-             documents= { this.state.documents }
+             categories= { this.state.categories }
              />
              </div>
         )

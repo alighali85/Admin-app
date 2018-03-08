@@ -16,25 +16,26 @@ class App extends Component {
     this.state = {
       auth: null,
       userId: '',
+      role: null,
     }
   }
 
 componentWillMount() {
-  const auth = localStorage.getItem('token');
-  if (auth === 'true ') {
-    this.setState({
+  const auth = localStorage.getItem( 'token' );
+  if ( auth === 'true' ) {
+    this.setState( {
       auth: true
-    })
+    } )
   }
   else {
-    this.setState({
+    this.setState( {
       auth: false
-    })
+    } )
   }
 }
 
 componentDidMount() {
-    console.log('USER ID APP// '+  this.props.auth ) 
+    console.log(' //USER Auth in APP// '+  this.props.auth ) 
   }
 
 render() {
@@ -43,14 +44,14 @@ render() {
           <BrowserRouter>
             <Grid fluid={ true } >
               <Row >
-                  <Col md={ 3 } xsHidden={ true } className='sideMenu text-center'>
-                  <img alt="" width='50%' src='http://www.mieterengel.de/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-11.58.52-AM.png'/>
-                  <AdminNav auth= {this.props.auth} className='sideMenu text-left'/>
+                  <Col md={ 3 } xsHidden={ true } className=" sideMenu text-center ">
+                  <img alt=" logo " width=" 50% " src=" http://www.mieterengel.de/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-11.58.52-AM.png"/>
+                  <AdminNav auth={ this.props.auth } className=" sideMenu text-left "/>
                     </Col>
-                  <Col md={ 9 } className=" main-body" > 
+                  <Col md={ 9 } className="main-body" > 
                   <br/>
-                  { auth ? <Route path="/" exact component={ AdminDashBoard } /> : <AdminHomePage/> }
-                  { routes.map( ({ path, component:C })=> ( 
+                  { auth ? <Route path="/" exact component={ AdminDashBoard }/> : <AdminHomePage/> }
+                  { routes.map( ({ path, component:C }) => ( 
                       <Route
                       path= { path }
                       render = { ( props ) => <C {...props} auth= { this.props.auth }/> }
@@ -60,7 +61,7 @@ render() {
               </Row>
           </Grid>
       </BrowserRouter>
-    );
+    )
   }
 }
 

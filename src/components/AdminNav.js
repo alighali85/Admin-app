@@ -16,7 +16,7 @@ class AdminNav extends Component {
     this.logout = this.logout.bind( this );
   }
   toogleNav() {
-    this.setState( prevState => ( { navShow: !prevState.navShow }) );
+    this.setState( prevState => ( { navShow: !prevState.navShow } ) );
   }
 
   logout () {
@@ -26,21 +26,22 @@ class AdminNav extends Component {
     render() {
       if ( this.props.auth === true ) {
         return (
-          <div style={{color: '#288288'}}>
+          <div style={ {color: '#288288'} }>
           <br/>
             <ul class="list-group ">
-            { routes.map( path => 
+            { routes.filter( path => path.directAccess == true )
+              .map( path => 
               <Link
-                to={ path.path } activeClassName="active">
-                <li href="/home" class="list-group-item">
+                to={ path.path } activeClassName=" active ">
+                <li href=" /home " class=" list-group-item ">
                 <span className=" glyphicon glyphicon-user "> </span>
-                <a href="" > {path.title} </a>
+                <a href="" > { path.title } </a>
                 </li>
               </Link>
             )}
 
-            { !this.props.auth ? <li href="/" class="list-group-item"><a href="/login" > Login </a></li> 
-            : <li onClick= { this.logout } href="/" class="list-group-item"><a href="/" > Logout </a></li>
+            { !this.props.auth ? <li href="/" class=" list-group-item "><a href=" /login " > Login </a></li> 
+            : <li onClick= { this.logout } href="/" class=" list-group-item "><a href=" / " > Logout </a></li>
           }
           </ul>
         </div> )

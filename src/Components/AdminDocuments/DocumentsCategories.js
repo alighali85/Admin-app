@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import {  ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import  './styles.css';
 
 class DocumentsCategories extends Component {
     constructor ( props ) {
-        super ( props )
+        super ( props );
+        this.state = {
+        }
     }
 
     componentWillMount() {
@@ -16,20 +19,18 @@ class DocumentsCategories extends Component {
     render () {
         return ( 
             <ListGroup>
-                <h3> Documents categories </h3>
-                { this.props.documents.map( ( doc, index ) =>
-                    <ListGroupItem href=" # " key={ index } className =' usersList '> 
+                { this.props.categories.reverse().map( ( cat, index ) =>
+                    <ListGroupItem href=" # " key={ index } className=" usersList "> 
                     <Link
                         to={{ 
-                            pathname: '/editCategory',
+                            pathname: "/editCategory",
                             state: {
-                                categoryId : `${ doc.id }`,
-                                categoryName: `${ doc.name }`,
+                                categoryId : `${ cat.id }`,
+                                categoryName: `${ cat.name }`,
                             }
                         }} activeClassName=" active ">
-                        <li href=" /home " class=" list-group-item ">
-                        <span className=" glyphicon glyphicon-user "> </span>
-                        <a href="" > { doc.id }  - { doc.name } </a>
+                        <li  class=" category-list-item ">
+                        <a> { index + 1 }  - { cat.name }  <small> last update was: { cat.updatedAt } </small></a>
                         </li>
                     </Link>
                 </ListGroupItem> ) }
