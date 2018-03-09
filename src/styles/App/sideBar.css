@@ -1,0 +1,48 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  flex-grow: 1;
+  background: #288288;
+  background-image: url("../../assets/images/sidebar-background.svg");
+  overflow: hidden;
+  min-width: 300px;
+  max-width: 300px; }
+  .sidebar .logo {
+    width: 100%; }
+
+.sidebar-menu li {
+  transition: all 300ms ease-in-out;
+  margin: 14px 0px; }
+  .sidebar-menu li:hover {
+    margin-left: 14px; }
+
+.sidebar-menu a {
+  color: white !important;
+  margin: 14px 0px !important;
+  padding: 14px 0px !important;
+  font-size: 19px;
+  text-decoration: none !important; }
+
+.logOutButton {
+  width: 200px;
+  margin-left: 50px;
+  border-radius: 4px;
+  padding: 13px 15px;
+  color: #ffffff;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  transition: 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  background-color: #770358;
+  position: absolute;
+  bottom: 48px; }
+  .logOutButton:hover {
+    text-decoration: none !important;
+    color: white;
+    transform: scale(1.02); }

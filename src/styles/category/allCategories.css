@@ -1,0 +1,19 @@
+.category-list-item {
+  transition: all 300ms ease-in-out; }
+
+.category-list-item:hover {
+  transform: scale(1.02); }
+
+.category-list-item:hover small {
+  color: black; }
+
+.category-list-item a {
+  text-decoration: none !important; }
+
+.category-list-item a:hover {
+  text-decoration: none !important; }
+
+small {
+  position: absolute;
+  right: 14px;
+  color: lightgray; }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DocumentsCategories from '../../Components/AdminDocuments/DocumentsCategories';
+import AdminCategories from '../../Components/AdminDocuments/AdminCategories';
 import { Route } from 'react-router-dom';
 import documentCategoryIcon from '../../assets/images/documentIcon.png'
 
@@ -47,7 +47,7 @@ class Categories extends Component {
                   <h3><img width=" 64 "  width=" 64 " src={ documentCategoryIcon }/>
                      Documents categories </h3> <button onClick= { this.getCategories }> Update { this.state.categories.length } </button> </p>
                    <br/><br/>
-            <DocumentsCategories
+            <AdminCategories
              auth = { this.props.auth } 
              history = {this.props.history }
              categories= { this.state.categories }

@@ -6,8 +6,11 @@ import AdminNav from './Components/AdminNav';
 import AdminDashBoard from './Components/AdminDashBoard';
 import routes from './routes'
 import './styles/mainLayout.css';
+import './styles/App/App.css';
+import './styles/App/sideBar.css';
 import AdminHomePage from './Components/AdminHomePage';
 import { connect } from 'react-redux';
+import logo from './assets/images/mieterengel-logo.png';
 
   
 class App extends Component {
@@ -40,15 +43,16 @@ componentDidMount() {
 
 render() {
   const { auth } = this.props;
-  return (        
-          <BrowserRouter>
-            <Grid fluid={ true } >
-              <Row >
-                  <Col md={ 3 } xsHidden={ true } className=" sideMenu text-center ">
-                  <img alt=" logo " width=" 50% " src=" http://www.mieterengel.de/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-11.58.52-AM.png"/>
-                  <AdminNav auth={ this.props.auth } className=" sideMenu text-left "/>
-                    </Col>
-                  <Col md={ 9 } className="main-body" > 
+  return (     <BrowserRouter>
+    <div className="app">   
+          
+             <div className=" sidebar ">
+                  <div class=" logo-img--desktop "><img src={ logo } alt=" Logo "/></div>
+                  <AdminNav auth={ this.props.auth }/>
+             </div>
+             
+             <div className=" main-body " >
+               <div className=" contnent-container " > 
                   <br/>
                   { auth ? <Route path="/" exact component={ AdminDashBoard }/> : <AdminHomePage/> }
                   { routes.map( ({ path, component:C }) => ( 
@@ -56,11 +60,11 @@ render() {
                       path= { path }
                       render = { ( props ) => <C {...props} auth= { this.props.auth }/> }
                       /> ) )
-                  }    
-                  </Col>
-              </Row>
-          </Grid>
-      </BrowserRouter>
+                  }
+                </div>    
+               </div>
+      
+      </div></BrowserRouter>
     )
   }
 }

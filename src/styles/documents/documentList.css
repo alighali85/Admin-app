@@ -1,0 +1,42 @@
+.documentsList--wraper .page-title {
+  margin-left: 18px; }
+
+.documentsList--wraper .list-group {
+  margin: 14px;
+  border: 1px solid lightgray;
+  padding: 0px;
+  border-radius: 5px; }
+  .documentsList--wraper .list-group .list-group-item {
+    padding: 14px;
+    border-bottom: 1px solid lightgray; }
+  .documentsList--wraper .list-group .list-item-id {
+    float: left;
+    font-size: 14px;
+    margin-right: 7px;
+    padding: 7px;
+    background: #288288;
+    border-radius: 50px;
+    width: 32px;
+    height: 32px;
+    color: white;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin-top: -2px; }
+  .documentsList--wraper .list-group .list-item-name {
+    float: left;
+    font-size: 21px;
+    color: #288288; }
+  .documentsList--wraper .list-group .list-item-categories {
+    padding: 7px 14px;
+    color: lightgray;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    float: left;
+    margin: 0px 7px;
+    cursor: pointer; }
+    .documentsList--wraper .list-group .list-item-categories:first-child {
+      margin-left: 36px; }
+    .documentsList--wraper .list-group .list-item-categories:hover {
+      background: #288288;
+      color: white; }

@@ -26,15 +26,16 @@ class EditCategory extends Component {
     }
 
     componentDidMount() {
-        console.log ( "conainet state  " + this.props.location.state.from )
     }
 
     render() {
-        const { categoryId, categoryName } = this.props.location.state;
+        const { categoryId, categoryName, createDate, lastUpdate } = this.props.location.state;
         return <EditCategoryForm
          categoryId={ categoryId  }
-         categoryName = { categoryName }
-         loading= { this.state.loading }
+         categoryName={ categoryName }
+         loading={ this.state.loading }
+         createDate={ createDate }
+         lastUpdate={ lastUpdate }
          />
     }
 }

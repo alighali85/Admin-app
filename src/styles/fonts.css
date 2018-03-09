@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Gudea:400,700");
+/* h1 style */
+.heading-1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #1a8289; }
+
+/* page title (h1) */
+.page-title {
+  display: flex; }
+  @media (max-width: 1024px) {
+    .page-title {
+      justify-content: flex-end;
+      margin-bottom: 20px; }
+      .page-title span {
+        display: none; } }
+  @media (min-width: 1025px) {
+    .page-title {
+      justify-content: space-between;
+      margin-bottom: 40px; } }
+  .page-title .button {
+    flex: 0 0 190px;
+    align-self: center; }
+
+/* auth page headings*/
+.auth-heading-1 {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25; }
+
+.auth-heading-2 {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.25; }
+
+/* under page title text */
+.subheading-text {
+  margin: 0;
+  color: #4a4a4a; }
+  @media (max-width: 1024px) {
+    .subheading-text {
+      font-size: 22px;
+      line-height: 1.23; } }
+  @media (min-width: 1025px) {
+    .subheading-text {
+      font-size: 18px;
+      line-height: 1.39; } }
+
+/* block-title (h4) */
+.inner-block-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.56;
+  text-align: left;
+  color: #4a4a4a; }

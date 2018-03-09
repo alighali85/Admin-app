@@ -2,7 +2,8 @@ import React , { Component } from 'react';
 import { api } from '../../auth/utils/api';
 import { Redirect } from 'react-router';
 import EditCategory from '../../Containers/Documents/EditCategory';
-import  './styles.css';
+import  '../../styles/category/editCategroy.css';
+import rightArowicon from '../../assets/images/double-angle-pointing-to-right.png'
 
 
  export class EditCategoryForm  extends Component {
@@ -11,7 +12,7 @@ import  './styles.css';
         this.state = {
             categoryName: this.props.categoryName,
             fireRedirect :false,
-            oldName: this.props.categoryName
+            oldName: this.props.categoryName,
         }
     }
 
@@ -43,34 +44,40 @@ import  './styles.css';
         return ( 
         <div className=" EditCategoryWraper " >
 
-                <div className="formWraper">
+                <div className=" formWraper ">
                     <form form className=" EditCategoryForm " onSubmit= { this.validateInput }>
-                        <div className=" CategoryName "> Edit Categroy #id { this.props.categoryId } </div> 
-                            <div className="details">
-                                <div className="oldName"> old name <br/>
-                                { this.state.oldName }
+                        <div className=" CategoryName "> Edit Categroy ({ this.state.oldName } ) </div> 
+                            <div className=" details ">
+                                <div className=" oldName "> Category Details: <br/><hr/><br/>
+                                id : # { this.props.categoryId }<br/>
+                                Created at :  { this.props.createDate } <br/>
+                                Last update : { this.props.lastUpdate }
+                                </div> <br/><hr/>
+
+                                <div > new name <br/>
+                                    <p  className=" newName ">  { this.state.categoryName } </p>
                                 </div>
-                                <div className="newName"> new name <br/>
-                                { this.state.categoryName }
-                            </div>
+                        </div>
+                        <br/>
+
+                        <div className=" categoryName ">
+                        <input className=" inputName " type=" text " value={ this.state.categoryName } onChange= { this.handelOnChange }/>
+                        </div><br/>
+
+                        <div class=" condition ">
+                        <br/>
+                        <p><input type="checkbox" required  name=" termsConfirmation "/>  
+                             _   . I aware that this action can't be reversed </p>
                         </div>
 
-                        <div class="inputName">
-                        <input type=" text " value={ this.state.categoryName } onChange= { this.handelOnChange }/>
-                        </div>
-
-                        <div class="condition">
-                            <button type="checkbox" required name="terms"/> <p> I aware that this action can't be reversed </p>
-                        </div>
-
-                        <div class="submit">
+                        <div class=" submit "><br/>
                         <button  className= " EditCategoryForm--submitButton " type= " submit " > update </button>
                         </div>
                     </form>
                 </div>
               
                 { fireRedirect && ( <Redirect to={{
-                    pathname: './documents' || '/thank-you',
+                    pathname: './categories' || '/',
                     state: {
                         active: true
                     }

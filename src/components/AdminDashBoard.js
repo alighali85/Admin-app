@@ -24,7 +24,7 @@ class AdminDashBoard extends Component {
             <Row>
                 <Col md={ 6 }>
                 <Jumbotron>
-                    <h1>Users!</h1>
+                    <h1>Categories {this.element}</h1>
                     <p>
                         here you can finde over view about the last activities on your app
                     </p>
@@ -36,34 +36,7 @@ class AdminDashBoard extends Component {
 
                 <Col md={ 6 }>
                 <Jumbotron>
-                    <h1>Activities </h1>
-                    <p>
-                        here you can finde over view about the last activities on your app
-                    </p>
-                    <p>
-                        <Button bsStyle="primary" style={{background:'#288288', border: 'none'}}>Learn more</Button>
-                    </p>
-                    </Jumbotron>
-                </Col>
-
-            </Row>
-
-            <Row>
-                <Col md={ 6 }>
-                <Jumbotron>
-                    <h1>Documents center{this.element}</h1>
-                    <p>
-                        here you can finde over view about the last activities on your app
-                    </p>
-                    <p>
-                        <Button bsStyle="primary" style={{background:'#288288', border: 'none'}}>Learn more</Button>
-                    </p>
-                    </Jumbotron>
-                </Col>
-
-                <Col md={ 6 }>
-                <Jumbotron>
-                    <h1> Services</h1>
+                    <h1> Documents </h1>
                     <p>
                         here you can finde over view about the last activities on your app
                     </p>

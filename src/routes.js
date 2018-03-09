@@ -4,6 +4,7 @@ import AdminUsers from './Components/AdminUsers';
 import AdminLogin from './Components/AdminLogin';
 import Categories from './Containers/Documents/Categories';
 import EditCategory from './Containers/Documents/EditCategory';
+import Documents from './Containers/Documents/Documents';
 
 
 export const routes = [
@@ -14,9 +15,14 @@ export const routes = [
       directAccess: true
     },
     {
-      path: '/documents',
+      path: '/categories',
       component: Categories,
-      title: 'Documents Categories',
+      title: 'Categories',
+      directAccess: true
+    },{
+      path: '/documenst',
+      component: Documents,
+      title: 'Documents',
       directAccess: true
     },
     {

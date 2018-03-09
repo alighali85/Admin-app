@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {  ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import  './styles.css';
+import  '../../styles/category/allCategories.css';
 
-class DocumentsCategories extends Component {
+class AdminCategories extends Component {
     constructor ( props ) {
         super ( props );
         this.state = {
@@ -27,6 +27,8 @@ class DocumentsCategories extends Component {
                             state: {
                                 categoryId : `${ cat.id }`,
                                 categoryName: `${ cat.name }`,
+                                createDate : `${ cat.createdAt }`,
+                                lastUpdate : `${ cat.updatedAt }`,
                             }
                         }} activeClassName=" active ">
                         <li  class=" category-list-item ">
@@ -39,4 +41,4 @@ class DocumentsCategories extends Component {
     }
 }
 
-export default DocumentsCategories;
+export default AdminCategories;
