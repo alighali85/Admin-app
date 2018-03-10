@@ -18,7 +18,7 @@ class AdminLogin extends Component {
    handelInputChange = ( event ) => {
      const name = event.target.name;
      this.setState({
-      [name]: event.target.value,
+      [ name ]: event.target.value,
       alert: ''
      })
    }
@@ -28,8 +28,8 @@ class AdminLogin extends Component {
        token: res.data.token
      } );
 
-     localStorage.setItem('token', this.state.token);
-     window.location.href= './'
+     localStorage.setItem( 'token', this.state.token );
+     window.location.href='./'
    }
 
    handelLoginErrors = (  ) => {
@@ -48,10 +48,10 @@ class AdminLogin extends Component {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
+          body: JSON.stringify( {
               email: userEmail,
               password: userPassword,
-          })
+          } )
         }).then( response => {
           if ( response.status !== 200 ) {
             this.handelLoginErrors( response.status );
@@ -70,19 +70,18 @@ class AdminLogin extends Component {
         return ( 
         <Grid>
           
-            <h2> Admin Log in Area </h2><br/>
+            <h2> Admin Log in Area </h2> <br/>
             <br/>
-            <p style={{color: 'yellow' }}>  {this.state.alert}</p>
+            <p style={{color: 'yellow' }}> { this.state.alert }</p>
             
             <Form horizontal onSubmit={this.sendLoginRequest}>
           <FormGroup controlId="formHorizontalEmail">
-            
             <Col sm={ 12 }>
               <FormControl 
-                name= 'email'
+                name='email'
                 onChange={ this.handelInputChange }
                 value= { this.state.email } 
-                type="email" placeholder="Email" 
+                type='email' placeholder="Email" 
                 />
             </Col><br/>
           </FormGroup>

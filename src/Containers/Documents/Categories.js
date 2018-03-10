@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import AdminCategories from '../../Components/AdminDocuments/AdminCategories';
 import { Route } from 'react-router-dom';
-import documentCategoryIcon from '../../assets/images/documentIcon.png'
+import documentCategoryIcon from '../../assets/images/documentIcon.png';
+
 
 class Categories extends Component {
     constructor( props ) {
@@ -28,11 +29,7 @@ class Categories extends Component {
           })  
     }
 
-    componentDidMount() {
-}
-
     componentWillMount() {
-      
         if ( this.props.auth !== true ) {
              this.props.history.push( "/" );
         } else {
@@ -44,15 +41,16 @@ class Categories extends Component {
         return (
             <div> 
               <p> 
-                  <h3><img width=" 64 "  width=" 64 " src={ documentCategoryIcon }/>
+                <h3>
+                    <img width=" 64 "  width=" 64 " src={ documentCategoryIcon }/>
                      Documents categories </h3> <button onClick= { this.getCategories }> Update { this.state.categories.length } </button> </p>
                    <br/><br/>
-            <AdminCategories
-             auth = { this.props.auth } 
-             history = {this.props.history }
-             categories= { this.state.categories }
-             />
-             </div>
+                <AdminCategories
+                auth = { this.props.auth } 
+                history = {this.props.history }
+                categories= { this.state.categories }
+                />
+            </div>
         )
     }
 }

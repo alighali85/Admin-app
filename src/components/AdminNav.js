@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import  routes from '../routes';
 import './../styles/App/sideBar.css';
 
+
 class AdminNav extends Component {
   constructor( props ) {
     super( props );
@@ -16,6 +17,7 @@ class AdminNav extends Component {
     this.toogleNav = this.toogleNav.bind( this );
     this.logout = this.logout.bind( this );
   }
+
   toogleNav() {
     this.setState( prevState => ( { navShow: !prevState.navShow } ) );
   }
@@ -34,16 +36,15 @@ class AdminNav extends Component {
               .map( path => 
               <Link
                 to={ path.path } activeClassName=" active ">
-                <li href=" /home " className="sidebar-menu-li">
+                <li href="/home" className="sidebar-menu-li">
                 <a href="" > { path.title } </a>
                 </li>
               </Link>
             )}
 
-            
           </ul>
-          { !this.props.auth ? <li href="/" className=" "><a href=" /login " > Login </a></li> 
-            : <a onClick={ this.logout } href=" / " className=" logOutButton " > Logout </a>
+          { !this.props.auth ? <li><a href="/login " > Login </a> </li> 
+            : <a onClick={ this.logout } href="/" className="logOutButton" > Logout </a>
           }
         </div> )
     }

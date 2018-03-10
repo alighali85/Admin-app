@@ -3,6 +3,7 @@ import {  ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import  '../../styles/category/allCategories.css';
 
+
 class AdminCategories extends Component {
     constructor ( props ) {
         super ( props );
