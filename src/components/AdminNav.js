@@ -19,38 +19,36 @@ class AdminNav extends Component {
   }
 
   toogleNav() {
-    this.setState( prevState => ( { navShow: !prevState.navShow } ) );
+    this.setState( prevState => ({ navShow: !prevState.navShow }) );
   }
 
   logout () {
-    localStorage.clear( 'token ');
+    localStorage.clear( 'token' );
   }
   
     render() {
       if ( this.props.auth === true ) {
         return (
-          <div style={ {color: '#288288'} } className="">
-          <br/>
+          <div style={{ color: '#288288' }} className=""> <br/>
             <ul className="sidebar-menu">
-            { routes.filter( path => path.directAccess == true )
-              .map( path => 
-              <Link
-                to={ path.path } activeClassName=" active ">
-                <li href="/home" className="sidebar-menu-li">
-                <a href="" > { path.title } </a>
-                </li>
-              </Link>
-            )}
-
-          </ul>
-          { !this.props.auth ? <li><a href="/login " > Login </a> </li> 
-            : <a onClick={ this.logout } href="/" className="logOutButton" > Logout </a>
-          }
+              { routes.filter( path => path.directAccess == true )
+                .map( path => 
+                <Link
+                  to={ path.path } activeClassName="active">
+                  <li href="/home" className="sidebar-menu-li">
+                  <a href="" >{ path.title }</a>
+                  </li>
+                </Link>
+              )}
+            </ul>
+            { !this.props.auth ? <li><a href="/login " > Login </a> </li> 
+              : <a onClick={ this.logout } href="/" className="logOutButton"> Logout </a>
+            }
         </div> )
-    }
-    else {
-      return ( <AdminLogin/> )
-    }
+      }
+      else {
+        return ( <AdminLogin/> )
+      }
   }
 }
 

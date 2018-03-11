@@ -15,8 +15,8 @@ class AdminUsers extends Component {
         }
     }
 
-    userEmail =  {
-        color: "gray",
+    userEmail = () =>  {
+        color: "gray";
         marginLeft: "48px"
     }
 
