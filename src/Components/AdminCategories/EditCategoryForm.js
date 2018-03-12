@@ -27,7 +27,7 @@ export class EditCategoryForm  extends Component {
     e.preventDefault();
     if ( categoryName.length !== 0 ) {
       const { categoryName, categoryId } = this.state;
-      const documentsCategoriesEndPointId = `${documentsCategoriesEndPoint}/${this.props.categoryId }`;
+      const documentsCategoriesEndPointId = `${ documentsCategoriesEndPoint }/${ this.props.categoryId }`;
       
       EditCategory.updateCategory( categoryName, categoryId, documentsCategoriesEndPointId );
       this.setState({

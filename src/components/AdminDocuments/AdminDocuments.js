@@ -16,13 +16,14 @@ class AdminDocuments extends Component {
     return (
       <div>
         <div className="documentsList--wraper"> 
-          <h2 className="heading-1 page-title"> All Documents </h2>
+          <h2 className="heading-1 page-title">All Documents</h2>
             <ul className="list-group">
               { documents.map( ( doc, index ) => 
                 <li  className="list-group-item">
                 <div>
                 <span className="list-item-id">{ doc.id }</span>
-                  <h4 className="list-item-name">{ doc.name}</h4>
+                  <h4 className="list-item-name">{ doc.name }</h4>
+                  <button onClick={ this.deleteDocument } key={ doc.id }> delete</button>
                 </div> <hr/>
                   
                   <h6 >                    
@@ -30,9 +31,9 @@ class AdminDocuments extends Component {
                       <p>
                         <Link className="list-item-categories"
                           to={{
-                            pathname: `/documents-by-category/${cat.id}`,
+                            pathname: `/documents-by-category/${ cat.id }`,
                             state: {
-                              categoryName: `${cat.name}`
+                              categoryName: `${ cat.name }`
                             }
                           }} 
                         >{ cat.name }</Link>
