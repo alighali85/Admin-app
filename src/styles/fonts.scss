@@ -16,16 +16,13 @@
   
   @media(max-width: $screen-lg-max){
     justify-content: flex-end;
-
     margin-bottom: 20px;
-
     span{
       display: none;
     }
   }
   @media(min-width: $screen-lg){
     justify-content: space-between;
-    
     margin-bottom: 40px;
   }
 

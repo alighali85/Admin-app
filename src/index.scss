@@ -2,4 +2,9 @@
 @import './styles/constants.scss';
 @import './styles/popup.scss';
 @import './styles/mixins.scss';
-@import './styles/documents/documentList.scss';
+@import './styles/App/App.scss';
+@import url('https://fonts.googleapis.com/css?family=Gudea');
+
+#roor {
+  font-family: 'Gudea', sans-serif;
+}

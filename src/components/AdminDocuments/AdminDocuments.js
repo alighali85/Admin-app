@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../styles/documents/documentList.css';
+import { Link } from 'react-router-dom';
 
 
 class AdminDocuments extends Component {
@@ -19,11 +20,24 @@ class AdminDocuments extends Component {
             <ul className="list-group">
               { documents.map( ( doc, index ) => 
                 <li  className="list-group-item">
-                  <span className="list-item-id">{ doc.id }</span>
-                  <h4 className="list-item-name">{ doc.name}</h4> 
-                    <br/> <br/> 
-                  <h6 > 
-                    { doc.categories.map( cat => <p className="list-item-categories">{ cat.name }</p> ) }
+                <div>
+                <span className="list-item-id">{ doc.id }</span>
+                  <h4 className="list-item-name">{ doc.name}</h4>
+                </div> <hr/>
+                  
+                  <h6 >                    
+                    { doc.categories.map( cat => 
+                      <p>
+                        <Link className="list-item-categories"
+                          to={{
+                            pathname: `/documents-by-category/${cat.id}`,
+                            state: {
+                              categoryName: `${cat.name}`
+                            }
+                          }} 
+                        >{ cat.name }</Link>
+                      </p> 
+                    ) }
                   </h6>
                 </li> )
               }
@@ -34,4 +48,4 @@ class AdminDocuments extends Component {
     }
 }
 
-export default AdminDocuments
+export default AdminDocuments;

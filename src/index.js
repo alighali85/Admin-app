@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+//import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import index from './reducers';
 import { userLoggedIn, userNotLoggedIn } from './actions';
-import { api } from './auth/utils/api';
+import { documentsCategoriesEndPoint } from './auth/utils/api';
 import { checkTokenOnserver } from './auth/checkTokenOnserver';
 import axios from 'axios';
 
 let store = createStore( index );
 let token = localStorage.getItem( 'token' );
  if ( token ) {
-    fetch( api , {
+    fetch( documentsCategoriesEndPoint , {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

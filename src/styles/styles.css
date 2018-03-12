@@ -81,11 +81,16 @@
 
 .app {
   display: flex;
+  font-family: 'Gudea', sans-serif;
+  font-size: 19px;
   background: #fafafa;
+  letter-spacing: 0.8px;
   min-height: 100vh; }
   @media (max-width: 1024px) {
     .app {
       flex-direction: column; } }
+  .app a {
+    text-decoration: none !important; }
   .app .main-body {
     flex-grow: 1;
     padding: 28px;
@@ -129,14 +134,17 @@
   transition: all 300ms ease-in-out;
   margin: 14px 0px; }
   .sidebar-menu li:hover {
-    margin-left: 14px; }
+    margin-left: 14px;
+    color: white; }
 
 .sidebar-menu a {
-  color: white !important;
+  color: #a6dadd !important;
   margin: 14px 0px !important;
   padding: 14px 0px !important;
-  font-size: 19px;
+  font-size: 21px;
   text-decoration: none !important; }
+  .sidebar-menu a:hover {
+    color: #ffffff !important; }
 
 .logOutButton {
   width: 200px;

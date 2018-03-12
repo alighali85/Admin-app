@@ -1,10 +1,15 @@
 .app {
   display: flex;
+  font-family: 'Gudea', sans-serif;
+  font-size: 19px;
   background: #fafafa;
+  letter-spacing: 0.8px;
   min-height: 100vh; }
   @media (max-width: 1024px) {
     .app {
       flex-direction: column; } }
+  .app a {
+    text-decoration: none !important; }
   .app .main-body {
     flex-grow: 1;
     padding: 28px;

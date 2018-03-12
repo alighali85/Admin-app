@@ -1,10 +1,10 @@
 
-import AdminHomePage from './Components/AdminHomePage';
-import AdminUsers from './Components/AdminUsers';
-import Categories from './Containers/Documents/Categories';
-import EditCategory from './Containers/Documents/EditCategory';
+import AdminHomePage from './Components/AdminApp/AdminHomePage';
+import AdminUsers from './Components/AdminUsers/AdminUsers';
+import Categories from './Containers/Categories/Categories';
+import EditCategory from './Containers/Categories/EditCategory';
 import Documents from './Containers/Documents/Documents';
-import DocumentsByCategory from './Components/AdminDocuments/DocumentsByCategory';
+import DocumentsCategory from './Containers/Documents/DocumentsCategory';
 
 
 export const routes = [
@@ -12,12 +12,6 @@ export const routes = [
     path: './',
     component: AdminHomePage,
     title: 'Home',
-    directAccess: true,
-  },
-  {
-    path: '/docCat',
-    component: DocumentsByCategory,
-    title: 'Doc by Cat',
     directAccess: true,
   },
   {
@@ -41,6 +35,12 @@ export const routes = [
     path: '/editCategory',
     component: EditCategory,
     title: 'Edit Category',
+    directAccess: false,
+  },
+  {
+    path: '/documents-by-category/:id',
+    component: DocumentsCategory,
+    title: 'Documents By Category',
     directAccess: false,
   },
 ];

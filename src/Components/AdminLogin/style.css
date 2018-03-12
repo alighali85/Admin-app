@@ -1,0 +1,39 @@
+.login-wraper .login-title {
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+  font-size: 21px;
+  font-weight: 400; }
+
+.login-wraper .loginInput-group {
+  width: 100%;
+  padding: 14px;
+  text-align: left; }
+
+.login-wraper .loginInput-email, .login-wraper .loginInput-password {
+  width: 80%;
+  padding: 14px;
+  background: white;
+  font-size: 19px; }
+
+.login-wraper .btn {
+  width: 200px;
+  margin-left: 50px;
+  border-radius: 10px;
+  padding: 13px 15px;
+  color: #ffffff;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  transition: 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  background-color: #770358;
+  margin-top: 28px; }
+  .login-wraper .btn:hover {
+    text-decoration: none !important;
+    color: white;
+    transform: scale(1.02); }
