@@ -1,15 +1,16 @@
-@import './constants.scss';
-
 .popup{
     position: fixed;
     top: 0; bottom: 0; left: 0; right: 0;
     z-index: $popupZindex;
+  
     display: flex;
     align-items: center;
     justify-content: center;
+  
     overflow: auto;
+  
     background: rgba($black, 0.3);
-    
+  
     @media(min-width: $screen-sm){
       padding: 25px;
     }
@@ -19,4 +20,4 @@
     border-radius: 2px;
     background-color: $white;
     box-shadow: 0 2px 2px 0 rgba($black, 0.24), 0 0 2px 0 rgba($black, 0.12);
-  }
+}

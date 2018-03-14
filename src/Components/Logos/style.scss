@@ -1,0 +1,48 @@
+@import "../../styles/constants";
+
+
+
+/* inner content sidebar logo style */
+.sidebar__logo{
+  @media(min-width: $screen-lg){
+    margin: {
+      top: 55px;
+      bottom: 60px;
+    }
+  }
+  
+  &-img{
+    /* desktop title */
+    &--desktop{
+      @media(max-width: $screen-lg-max){
+        display: none;
+      }
+      @media(min-width: $screen-lg){
+        display: block;
+        text-align: center;
+
+        img{
+          width: 160px;
+          height: auto;
+        }
+      }
+    }
+
+    /* mobile title */
+    &--mobile{
+      @media(max-width: $screen-lg-max){
+        display: block;
+        width: 215px;
+        height: 31px;
+        
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: contain;
+        background-image: url("../../assets/images/mobile-logo.png");
+      }
+      @media(min-width: $screen-lg){
+        display: none;
+      }
+    }
+  }
+}

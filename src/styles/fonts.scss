@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Gudea:400,700');
-@import './constants.scss';
 
 /* h1 style */ 
 .heading-1{
   margin: 0;
+
   font-size: 48px;
   font-weight: bold;
   letter-spacing: 0.5px;
@@ -16,13 +16,16 @@
   
   @media(max-width: $screen-lg-max){
     justify-content: flex-end;
+
     margin-bottom: 20px;
+
     span{
       display: none;
     }
   }
   @media(min-width: $screen-lg){
     justify-content: space-between;
+    
     margin-bottom: 40px;
   }
 
