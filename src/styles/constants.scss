@@ -1,0 +1,42 @@
+$DISPLAY_LAPTOP: 1280px;
+$DISPLAY_TABLET: 1025px;
+$DISPLAY_TABLET_PORTRAIT: 768px;
+
+$black: #000000;
+$white: #ffffff;
+$grey: #4a4a4a;
+$black: #3f3f3f;
+$brand: #228288;
+$blue: #a6dadd;
+$purple: #770358;
+$red: #d50000;
+
+$button-blue: #5ce7cd;
+$button-purple: $purple;
+$button-brand: $brand;
+$button-red: $red;
+
+$disabled: #e9ecef;
+
+$heading-color: #1a8289;
+
+$main-content-border: #d8d8d8;
+$footer-border: $main-content-border;
+$main-wrap-bg-color: #fafafa;
+
+$select-border-color: #9b9b9b;
+
+$sidebarZindex: 50;
+$popupZindex: 100;
+
+// custom queries
+$screen-lg: $DISPLAY_TABLET;
+$screen-lg-max: $screen-lg - 1;
+
+$screen-mac: 1280px;
+$screen-mac-max: $screen-mac - 1;
+
+$screen-sm: $DISPLAY_TABLET_PORTRAIT;
+$screen-sm-max: $screen-sm - 1;
+
+$transition: .25s cubic-bezier(0.445, 0.05, 0.55, 0.95);

@@ -1,0 +1,226 @@
+@import "../../styles/constants";
+@import "../../styles/mixins";
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  
+  @media(max-width: $screen-lg-max){
+    //background-color: $brand;
+    width: 100%;
+    z-index: $sidebarZindex;
+  }
+  @media(min-width: $screen-lg){
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    overflow: auto;
+
+    //height: 100vh;
+    width: 225px;
+    padding: {
+      right: 25px;
+      left: 25px;
+    }
+
+    background: {
+      image: url('../../assets/images/sidebar-background.svg');
+      repeat: repeat-y;
+      position: 50% 0;
+      color: $brand;
+    }
+  }
+
+  /* button mobile */
+  &__button-menu{
+    cursor: pointer;
+
+    @media(max-width: $screen-lg-max){
+      display: inline-block;
+    }
+    @media(min-width: $screen-lg){
+      display: none;
+    }
+
+    &:hover{
+      span{
+        background-color: $blue;
+      }
+    }
+
+    span{
+      display: block;
+      width: 30px;
+      height: 2px;
+      border-radius: 1px;
+
+      background-color: $white;
+
+      transition: $transition;
+
+      + span {
+        margin-top: 7px;
+      }
+    }
+  }
+  /* btn logout */ 
+  &__button-logout{
+    border: 0;
+    outline: 0;
+
+    @media(max-width: $screen-lg-max){
+      background-color: transparent;
+      color: $grey;
+      font-size: 18px;
+      line-height: 28px;
+    }
+    @media(min-width: $screen-lg){
+      padding-left: 30px;
+      color: $white;
+      
+      font: {
+        size: 14px;
+        weight: bold;
+      }
+      background: {
+        image: url('../../assets/images/logout-icon.png');
+        color: inherit;
+        position: left 50%;
+        repeat: no-repeat;
+      }  
+    }
+  }
+  /* btn lawyer*/
+  &__button-lawyer{
+    @media(max-width: $screen-lg-max){
+      display: none;
+    }
+    @media(min-width: $screen-lg){
+      margin-bottom: 10px;
+    }
+  }
+  &__buttons-wrapper{
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  /* sidebar top-side*/
+  &__top{
+    @media(max-width: $screen-lg-max){
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      height: 80px;
+      padding: {
+        left: 15px;
+        right: 15px;
+      }
+
+      background-color: $brand;
+    }
+  }
+
+  /* sidebar middle-side */
+  &-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    //margin-bottom: 45px;
+
+    @media(max-width: $screen-lg-max){
+      width: 320px;
+      transform: translateX(320px);
+
+      position: fixed;
+      top: 80px; right: 0;
+      z-index: $sidebarZindex;
+      overflow-y: auto;
+
+      border-left: 1px solid #979797;
+
+      padding: {
+        top: 0;
+        bottom: 40px;
+      }
+      height: calc(100% - 80px);
+
+      background-color: $white;
+
+      transition: .3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+      &.active{
+        transform: translateX(0px);
+      }
+    }
+    @media(min-width: $screen-lg){
+
+    }
+  }
+  
+  /* sidebar menu */ 
+  &-menu{
+    flex-grow: 1;
+
+    @media (min-width: $screen-lg) {
+      margin-bottom: 55px;
+    }
+
+    ul{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      ul{
+        @media(max-width: $screen-lg-max){
+          a{
+            padding-left: 70px;
+          }
+        }
+        @media(min-width: $screen-lg){
+          margin-left: 25px;
+        }
+      }
+    }
+    li{
+
+      a.active {
+        @media(max-width: $screen-lg-max){
+          background-color: rgba($black, .3);
+        }
+        @media(min-width: $screen-lg){
+          color: $white;
+        }
+      }
+
+    }
+    a{
+      text-decoration: none;
+
+      transition: $transition;
+      
+      @media(max-width: $screen-lg-max){
+        display: block;
+        padding-left: 35px;
+
+        font-size: 24px;
+        line-height: 3.21;
+        color: $grey;
+      }
+      @media(min-width: $screen-lg){
+        font: {
+          size: 18px;
+          weight: bold;
+        }
+        line-height: 1.94;
+        color: $blue;
+        &:hover{
+          color: $white;
+        }
+      }
+    }
+  }
+}
